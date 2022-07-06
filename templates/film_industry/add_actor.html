@@ -1,0 +1,13 @@
+{% extends 'film_industry/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+        <h2 class="my-3">Add Actor</h2>
+        <form method="post">
+            {{ a_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success btn-sm">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

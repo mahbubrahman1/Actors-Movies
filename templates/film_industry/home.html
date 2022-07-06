@@ -1,0 +1,13 @@
+{% extends 'film_industry/base.html' %}
+{% block content %}
+<h2 class="my-3">List of Actors</h2>
+<ul>
+    {% if actors %}
+        {% for actor in actors %}
+        <li>{{ actor.name }}</li>
+        {% endfor %}
+    {% else %}
+    <h4>No Records</h4>
+    {% endif %}
+</ul>
+{% endblock content %}
