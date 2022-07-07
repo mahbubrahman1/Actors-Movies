@@ -1,0 +1,26 @@
+{% extends 'film_industry/base.html' %}
+{% block content %}
+<h2 class="mt-3">{{ actor.name }}</h2>
+<h4>Age: {{ actor.age }}</h4>
+<h4>Nationality: {{ actor.nationality }}</h4>
+<a href="{% url 'edit_actor' a_id=actor.id %}" class="btn btn-warning btn-sm mb-2">Edit</a> <br>
+<span class="fs-5 bg-dark text-white px-3">Movies</span>
+<table class="table w-50 border mt-2">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    {% for movie in movies %}
+    <tbody>
+      <tr>
+        <td>{{ movie.movie_name }}</td>
+        <td>{{ movie.release_date|date:"M d, Y" }}</td>
+        <td>{{ movie.rating_star }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock content %}

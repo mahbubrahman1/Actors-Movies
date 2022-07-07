@@ -4,14 +4,22 @@ from FilmIndustry.models import Actor, Movie
 from FilmIndustry import forms
 
 
+# homepage
 def home(request):
     actors = Actor.objects.all()
 
     return render(request, 'film_industry/home.html', {'actors': actors})
 
-def movies(request):
-    return render(request, 'film_industry/movies.html')
 
+# movie list 
+def movies(request, a_id):
+    actor = Actor.objects.get(pk=a_id)
+    movies = Movie.objects.filter(actor=a_id)
+
+    return render(request, 'film_industry/movies.html', {'actor': actor, 'movies': movies})
+
+
+# add actor form 
 def add_actor(request):
     form = forms.ActorForm()
 
@@ -24,6 +32,8 @@ def add_actor(request):
 
     return render(request, 'film_industry/add_actor.html', {'a_form': form})
 
+
+# add movie form 
 def add_movie(request):
     form = forms.MovieForm()
 
@@ -35,3 +45,11 @@ def add_movie(request):
             form = forms.MovieForm()
 
     return render(request, 'film_industry/add_movie.html', {'m_form': form})
+
+
+# edit actor
+def edit_actor(request, a_id):
+    actor = Actor.objects.get(pk=a_id)
+    form = forms.ActorForm(instance=actor)
+    
+    return render(request, 'film_industry/edit_actor.html', {'a_form': form})

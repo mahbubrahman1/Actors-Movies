@@ -2,11 +2,11 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-4">
-        <h2 class="my-3">Add Actor</h2>
-        <form method="post">
-            {{ a_form.as_p }}
+        <h2 class="my-3">Edit Actor</h2>
+        <form method="POST">
+            {{ a_form }}
             {% csrf_token %}
-            <button type="submit" class="btn btn-success btn-sm">Submit</button>
+            <button type="submit" class="btn btn-success btn-sm mt-2">Update</button>
         </form>
     </div>
 </div>

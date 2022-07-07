@@ -4,7 +4,7 @@
 <ul>
     {% if actors %}
         {% for actor in actors %}
-        <li>{{ actor.name }}</li>
+        <li><a href="{% url 'movies' a_id=actor.id %}" class="text-decoration-none text-black">{{ actor.name }}</a></li>
         {% endfor %}
     {% else %}
     <h4>No Records</h4>
